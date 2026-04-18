@@ -44,13 +44,21 @@ module Aurastral
       case response.status
       when 200
         body = JSON.parse(response.body)
-        body.dig("choices", 0, "message", "content") || raise("Unexpected API response format")
+
+        # Validar que body es un Hash
+        raise "Formato de respuesta inesperado: #{body.class}" unless body.is_a?(Hash)
+
+        # Obtener el contenido
+        content = body.dig("choices", 0, "message", "content")
+        raise "Formato de respuesta inesperado de la API: no se encontró contenido" if content.nil?
+
+        content
       when 401
-        raise "Invalid GROQ_API_KEY. Please check your credentials."
+        raise "API key de GROQ inválida. Por favor verifica tus credenciales."
       when 429
-        raise "Rate limit exceeded. Please try again later."
+        raise "Límite de solicitudes excedido. Intenta más tarde."
       else
-        raise "Groq API error (#{response.status}): #{response.body}"
+        raise "Error de la API de Groq (#{response.status}): #{response.body}"
       end
     end
   end
