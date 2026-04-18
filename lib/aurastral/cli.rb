@@ -56,21 +56,27 @@ module Aurastral
 
       # Step 1: Select sign
       sign = select_sign
+      puts "✓ Signo seleccionado: #{sign.inspect}"
 
       # Step 2: Select period
       period = select_period
+      puts "✓ Período seleccionado: #{period.inspect}"
 
       # Step 3: Ask for mood
       mood = ask_mood
+      puts "✓ Humor: #{mood.inspect}"
 
       # Step 4: Select language
       lang = select_language
+      puts "✓ Idioma: #{lang.inspect}"
 
       # Step 5: Select theme
       theme = select_theme
+      puts "✓ Tema: #{theme.inspect}"
 
       # Step 6: Export option
       should_export = select_export
+      puts "✓ Exportar: #{should_export.inspect}"
 
       puts "\n"
 
