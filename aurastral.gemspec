@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative "lib/aurastral/version"
+
 Gem::Specification.new do |spec|
   spec.name          = "aurastral"
-  spec.version       = "0.1.0"
+  spec.version       = Aurastral::VERSION
   spec.authors       = ["Aurastral"]
   spec.email         = ["info@aurastral.dev"]
   spec.summary       = "Generate personalized horoscopes using Groq API"
@@ -19,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "dotenv", "~> 3.0"
   spec.add_runtime_dependency "tty-prompt", "~> 0.23"
   spec.add_runtime_dependency "tty-box", "~> 0.7"
+  spec.add_runtime_dependency "tty-spinner", "~> 0.9"
   spec.add_runtime_dependency "pastel", "~> 0.8"
 
   spec.add_development_dependency "rspec", "~> 3.13"

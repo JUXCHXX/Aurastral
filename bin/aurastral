@@ -3,4 +3,22 @@
 
 require_relative "../lib/aurastral/cli"
 
-Aurastral::CLI.new(ARGV).run
+if ARGV[0] == "start" || ARGV.empty?
+  Aurastral::CLI.new(ARGV).run
+elsif ARGV[0] == "--version" || ARGV[0] == "-v"
+  require_relative "../lib/aurastral/version"
+  puts "Aurastral v#{Aurastral::VERSION}"
+  exit 0
+elsif ARGV[0] == "--help" || ARGV[0] == "-h"
+  puts "Usage: aurastral [COMMAND]"
+  puts ""
+  puts "Commands:"
+  puts "  start              Start the horoscope engine (default)"
+  puts "  --version, -v      Show version"
+  puts "  --help, -h         Show this help message"
+  exit 0
+else
+  puts "Unknown command: #{ARGV[0]}"
+  puts "Use 'aurastral --help' for usage information"
+  exit 1
+end
