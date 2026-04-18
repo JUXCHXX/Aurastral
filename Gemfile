@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "ruby", "~> 3.2"
+ruby '>= 3.2'
 gem "faraday", "~> 2.7"
 gem "dotenv", "~> 3.0"
 gem "tty-prompt", "~> 0.23"

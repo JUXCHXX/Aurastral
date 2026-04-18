@@ -31,10 +31,10 @@ module Aurastral
     private
 
     def show_main_menu
-      choice = @prompt.select("✦ What would you like to do?") do |menu|
-        menu.choice "Read my horoscope", 1
-        menu.choice "About Aurastral", 2
-        menu.choice "Exit", 3
+      choice = @prompt.select("✦ ¿Qué deseas hacer?") do |menu|
+        menu.choice "Leer mi horóscopo", 1
+        menu.choice "Acerca de Aurastral", 2
+        menu.choice "Salir", 3
       end
 
       case choice
@@ -44,7 +44,7 @@ module Aurastral
         show_about
         show_main_menu
       when 3
-        puts "\n👋 May the stars guide you!\n"
+        puts "\n👋 ¡Que las estrellas te guíen!\n"
         exit 0
       end
     end
@@ -83,10 +83,10 @@ module Aurastral
       )
 
       puts "\n"
-      choice = @prompt.select("What next?") do |menu|
-        menu.choice "Read another horoscope", 1
-        menu.choice "Return to menu", 2
-        menu.choice "Exit", 3
+      choice = @prompt.select("¿Qué sigue?") do |menu|
+        menu.choice "Leer otro horóscopo", 1
+        menu.choice "Volver al menú", 2
+        menu.choice "Salir", 3
       end
 
       case choice
@@ -95,7 +95,7 @@ module Aurastral
       when 2
         show_main_menu
       when 3
-        puts "\n👋 May the stars guide you!\n"
+        puts "\n👋 ¡Que las estrellas te guíen!\n"
         exit 0
       end
     end
@@ -104,34 +104,35 @@ module Aurastral
       signs = Signs.all
       sign_choices = signs.map { |key, data| "#{data[:symbol]}  #{data[:name]}" }
 
-      choice_index = @prompt.select("Select your sign:", sign_choices, per_page: 6, cycle: true)
+      selected_text = @prompt.select("Selecciona tu signo:", sign_choices, per_page: 6, cycle: true)
+      choice_index = sign_choices.index(selected_text)
       Signs.all.keys[choice_index]
     end
 
     def select_period
-      @prompt.select("Select period:", ["Day", "Week", "Month"], cycle: true).downcase
+      @prompt.select("Selecciona período:", ["Día", "Semana", "Mes"], cycle: true).downcase
     end
 
     def ask_mood
-      @prompt.ask("How are you feeling today? (optional, press Enter to skip)", default: "neutral")
+      @prompt.ask("¿Cómo te sientes hoy? (opcional, presiona Enter para omitir)", default: "neutral")
     end
 
     def select_language
-      choice = @prompt.select("Select language:", ["English", "Español"], cycle: true)
+      choice = @prompt.select("Selecciona idioma:", ["English", "Español"], cycle: true)
       choice == "English" ? "en" : "es"
     end
 
     def select_theme
-      @prompt.select("Select theme:", ["Cosmic", "Minimal"], cycle: true).downcase
+      @prompt.select("Selecciona tema:", ["Cosmic", "Minimal"], cycle: true).downcase
     end
 
     def select_export
-      choice = @prompt.select("Export reading to Markdown?", ["Yes", "No"], cycle: true)
-      choice == "Yes"
+      choice = @prompt.select("¿Exportar lectura a Markdown?", ["Sí", "No"], cycle: true)
+      choice == "Sí"
     end
 
     def generate_and_display(sign:, period:, mood:, lang:, theme:, export:)
-      spinner = Spinner.run("Consulting the stars...")
+      spinner = Spinner.run("Consultando las estrellas...")
 
       begin
         horoscope = Horoscope.new(sign: sign, mood: mood, period: period, lang: lang)
@@ -157,10 +158,10 @@ module Aurastral
               theme: theme
             }
           )
-          success("✓ Reading saved to: #{filepath}")
+          success("✓ Lectura guardada en: #{filepath}")
         end
       rescue => e
-        Spinner.error(spinner, "✗ Failed: #{e.message}")
+        Spinner.error(spinner, "✗ Error: #{e.message}")
         raise e
       end
     end
@@ -168,21 +169,21 @@ module Aurastral
     def show_about
       about_text = <<~TEXT
 
-        ✦ AURASTRAL — Your Terminal Horoscope Engine ✦
+        ✦ AURASTRAL — Tu Motor de Horóscopo en Terminal ✦
 
-        Version: #{Aurastral::VERSION}
+        Versión: #{Aurastral::VERSION}
 
-        Aurastral generates personalized horoscopes powered by the Groq API
-        and the llama-3.3-70b-versatile language model.
+        Aurastral genera horóscopos personalizados potenciados por la API de Groq
+        y el modelo de lenguaje llama-3.3-70b-versatile.
 
-        Features:
-        • Personalized readings based on your zodiac sign
-        • Customizable mood and time period
-        • Support for English and Spanish
-        • Beautiful terminal themes (Cosmic & Minimal)
-        • Export readings to Markdown
+        Características:
+        • Lecturas personalizadas según tu signo zodiacal
+        • Período y humor personalizables
+        • Soporte en inglés y español
+        • Temas hermosos para terminal (Cosmic & Minimal)
+        • Exportar lecturas a Markdown
 
-        The stars await your curiosity...
+        Las estrellas aguardan tu curiosidad...
 
       TEXT
 

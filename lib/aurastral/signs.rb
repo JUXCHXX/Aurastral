@@ -5,63 +5,63 @@ module Aurastral
     ZODIAC_SIGNS = {
       "aries" => {
         symbol: "♈",
-        dates: "March 21 - April 19",
+        dates: "21 de marzo - 19 de abril",
         name: "Aries"
       },
       "taurus" => {
         symbol: "♉",
-        dates: "April 20 - May 20",
-        name: "Taurus"
+        dates: "20 de abril - 20 de mayo",
+        name: "Tauro"
       },
       "gemini" => {
         symbol: "♊",
-        dates: "May 21 - June 20",
-        name: "Gemini"
+        dates: "21 de mayo - 20 de junio",
+        name: "Géminis"
       },
       "cancer" => {
         symbol: "♋",
-        dates: "June 21 - July 22",
-        name: "Cancer"
+        dates: "21 de junio - 22 de julio",
+        name: "Cáncer"
       },
       "leo" => {
         symbol: "♌",
-        dates: "July 23 - August 22",
+        dates: "23 de julio - 22 de agosto",
         name: "Leo"
       },
       "virgo" => {
         symbol: "♍",
-        dates: "August 23 - September 22",
+        dates: "23 de agosto - 22 de septiembre",
         name: "Virgo"
       },
       "libra" => {
         symbol: "♎",
-        dates: "September 23 - October 22",
+        dates: "23 de septiembre - 22 de octubre",
         name: "Libra"
       },
       "scorpio" => {
         symbol: "♏",
-        dates: "October 23 - November 21",
-        name: "Scorpio"
+        dates: "23 de octubre - 21 de noviembre",
+        name: "Escorpio"
       },
       "sagittarius" => {
         symbol: "♐",
-        dates: "November 22 - December 21",
-        name: "Sagittarius"
+        dates: "22 de noviembre - 21 de diciembre",
+        name: "Sagitario"
       },
       "capricorn" => {
         symbol: "♑",
-        dates: "December 22 - January 19",
-        name: "Capricorn"
+        dates: "22 de diciembre - 19 de enero",
+        name: "Capricornio"
       },
       "aquarius" => {
         symbol: "♒",
-        dates: "January 20 - February 18",
-        name: "Aquarius"
+        dates: "20 de enero - 18 de febrero",
+        name: "Acuario"
       },
       "pisces" => {
         symbol: "♓",
-        dates: "February 19 - March 20",
-        name: "Pisces"
+        dates: "19 de febrero - 20 de marzo",
+        name: "Piscis"
       }
     }.freeze
 
