@@ -116,10 +116,12 @@ module Aurastral
 
       # Encontrar la clave del signo basado en el nombre seleccionado
       signs.each do |key, data|
-        return key if "#{data[:symbol]}  #{data[:name]}" == selected_text
+        if "#{data[:symbol]}  #{data[:name]}" == selected_text
+          return key
+        end
       end
 
-      raise "Signo no encontrado"
+      raise "Signo no encontrado: #{selected_text.inspect}"
     end
 
     def select_period
