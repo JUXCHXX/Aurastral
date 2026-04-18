@@ -1,0 +1,35 @@
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/tmp/
+/test/tmp/
+/test/version_tmp/
+/tmp/
+/.yardoc/
+
+# Bundler
+/.bundle
+/Gemfile.lock
+
+# Env
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+readings/
