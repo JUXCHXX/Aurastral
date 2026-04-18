@@ -25,6 +25,8 @@ module Aurastral
       exit 0
     rescue => e
       error("❌ #{e.message}")
+      puts "\nDetalles del error:"
+      puts e.backtrace.first(5)
       exit 1
     end
 
