@@ -110,7 +110,9 @@ module Aurastral
     end
 
     def select_period
-      @prompt.select("Selecciona período:", ["Día", "Semana", "Mes"], cycle: true).downcase
+      opciones = { "Día" => "day", "Semana" => "week", "Mes" => "month" }
+      seleccion = @prompt.select("Selecciona período:", opciones.keys, cycle: true)
+      opciones[seleccion]
     end
 
     def ask_mood
