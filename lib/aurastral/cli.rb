@@ -105,8 +105,13 @@ module Aurastral
       sign_choices = signs.map { |key, data| "#{data[:symbol]}  #{data[:name]}" }
 
       selected_text = @prompt.select("Selecciona tu signo:", sign_choices, per_page: 6, cycle: true)
-      choice_index = sign_choices.index(selected_text)
-      Signs.all.keys[choice_index]
+
+      # Encontrar la clave del signo basado en el nombre seleccionado
+      signs.each do |key, data|
+        return key if "#{data[:symbol]}  #{data[:name]}" == selected_text
+      end
+
+      raise "Signo no encontrado"
     end
 
     def select_period
